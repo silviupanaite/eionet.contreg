@@ -1,7 +1,4 @@
 pipeline {
-  agent {
-            node { label "docker-host" }
-  }
 
   environment {
     GIT_NAME = "eionet.contreg"
