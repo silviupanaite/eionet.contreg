@@ -1,4 +1,6 @@
 pipeline {
+  agent {
+  }
 
   environment {
     GIT_NAME = "eionet.contreg"
