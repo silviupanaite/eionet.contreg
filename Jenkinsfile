@@ -16,6 +16,7 @@ pipeline {
     stage('Check JDK') {
       steps {
         sh 'echo JAVA_HOME=$JAVA_HOME'
+        sh 'java -version'
         sh 'ls $JAVA_HOME/bin'
         sh 'which javac'
         sh 'javac -version'
