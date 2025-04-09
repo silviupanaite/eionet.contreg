@@ -9,9 +9,17 @@ pipeline {
     availableport = sh(script: 'echo $(python3 -c \'import socket; s=socket.socket(); s.bind(("", 0)); print(s.getsockname()[1], end = ""); s.close()\');', returnStdout: true).trim();
     availableport2 = sh(script: 'echo $(python3 -c \'import socket; s=socket.socket(); s.bind(("", 0)); print(s.getsockname()[1], end = ""); s.close()\');', returnStdout: true).trim();
     availableport3 = sh(script: 'echo $(python3 -c \'import socket; s=socket.socket(); s.bind(("", 0)); print(s.getsockname()[1], end = ""); s.close()\');', returnStdout: true).trim();
+    PATH = "${JAVA_HOME}/bin:${env.PATH}"
   }
   
   stages {
+    stage('Check JDK') {
+      steps {
+        sh 'echo JAVA_HOME=$JAVA_HOME'
+        sh 'which javac'
+        sh 'javac -version'
+      }
+    }
 
     stage ('Unit Tests') {
       when {
